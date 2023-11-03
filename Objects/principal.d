@@ -9,3 +9,5 @@
 .\objects\principal.o: C:\Users\hoang\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.1\Device\Include\system_stm32f10x.h
 .\objects\principal.o: ./Drivers/Driver_GPIO.h
 .\objects\principal.o: ./Drivers/Driver_Timer.h
+.\objects\principal.o: ./Drivers/Driver_Plateau.h
+.\objects\principal.o: ./Drivers/Driver_UART.h

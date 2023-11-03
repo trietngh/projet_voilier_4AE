@@ -399,19 +399,24 @@
               <FilePath>.\Drivers\Driver_GPIO.c</FilePath>
             </File>
             <File>
-              <FileName>Driver_GPIO.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\Drivers\Driver_GPIO.h</FilePath>
-            </File>
-            <File>
               <FileName>Driver_Timer.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\Drivers\Driver_Timer.c</FilePath>
             </File>
             <File>
-              <FileName>Driver_Timer.h</FileName>
+              <FileName>Driver_UART.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Drivers\Driver_UART.c</FilePath>
+            </File>
+            <File>
+              <FileName>Driver_Plateau.h</FileName>
               <FileType>5</FileType>
-              <FilePath>.\Drivers\Driver_Timer.h</FilePath>
+              <FilePath>.\Drivers\Driver_Plateau.h</FilePath>
+            </File>
+            <File>
+              <FileName>Driver_Plateau.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Drivers\Driver_Plateau.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -816,19 +821,24 @@
               <FilePath>.\Drivers\Driver_GPIO.c</FilePath>
             </File>
             <File>
-              <FileName>Driver_GPIO.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\Drivers\Driver_GPIO.h</FilePath>
-            </File>
-            <File>
               <FileName>Driver_Timer.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\Drivers\Driver_Timer.c</FilePath>
             </File>
             <File>
-              <FileName>Driver_Timer.h</FileName>
+              <FileName>Driver_UART.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Drivers\Driver_UART.c</FilePath>
+            </File>
+            <File>
+              <FileName>Driver_Plateau.h</FileName>
               <FileType>5</FileType>
-              <FilePath>.\Drivers\Driver_Timer.h</FilePath>
+              <FilePath>.\Drivers\Driver_Plateau.h</FilePath>
+            </File>
+            <File>
+              <FileName>Driver_Plateau.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Drivers\Driver_Plateau.c</FilePath>
             </File>
           </Files>
         </Group>

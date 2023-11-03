@@ -32,7 +32,7 @@ typedef struct
 void MyUART_Init(MyUART_Struct_TypeDef * MyUART);
 void MyUART_Enable(MyUART_Struct_TypeDef * MyUART);
 void MyUART_Send(MyUART_Struct_TypeDef * MyUART, char * msg, uint16_t size_of_msg);
-void MyUART_Receive_IT(MyUART_Struct_TypeDef * MyUART, char Priorite, void (*IT_handler) (void));
+void MyUART_Enable_Receive_IT(MyUART_Struct_TypeDef * MyUART, char Priorite, void (*IT_handler) (void));
 
 void USART1_IRQHandler (void);
 void USART2_IRQHandler (void);
