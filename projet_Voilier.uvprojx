@@ -413,6 +413,16 @@
               <FileType>5</FileType>
               <FilePath>.\Drivers\Driver_Timer.h</FilePath>
             </File>
+            <File>
+              <FileName>Driver_UART.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Drivers\Driver_UART.c</FilePath>
+            </File>
+            <File>
+              <FileName>Driver_UART.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Drivers\Driver_UART.h</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -829,6 +839,16 @@
               <FileName>Driver_Timer.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\Drivers\Driver_Timer.h</FilePath>
+            </File>
+            <File>
+              <FileName>Driver_UART.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Drivers\Driver_UART.c</FilePath>
+            </File>
+            <File>
+              <FileName>Driver_UART.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Drivers\Driver_UART.h</FilePath>
             </File>
           </Files>
         </Group>
