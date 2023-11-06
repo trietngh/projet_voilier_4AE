@@ -169,6 +169,7 @@ void USART1_IRQHandler (){
 		if (ptr_Fnc_Callback != 0){
 			INDEXER_BUFFER = 0;
 			(*ptr_Fnc_Callback) ();
+			
 		}
 	}
 }
