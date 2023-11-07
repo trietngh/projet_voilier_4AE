@@ -17,13 +17,12 @@ void USART_IT(void){
 	//Envoyer bit de direction
 	if((octet_received & 0x80) == 0x80){
 		MyGPIO_Set(MonPlateau_global->DIR_Pin->GPIO,MonPlateau_global->DIR_Pin->GPIO_Pin);
+		octet_received = ~octet_received + 1;
 	}
 	else{
 		MyGPIO_Reset(MonPlateau_global->DIR_Pin->GPIO,MonPlateau_global->DIR_Pin->GPIO_Pin);
 	}
 	
-	//Masquer le bit de direction
-	octet_received &= ~0x80 ;
 	
 	//Convertir le duty_cycle
 	duty_cycle_PWM = (unsigned short)octet_received;

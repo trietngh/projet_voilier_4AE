@@ -1,6 +1,6 @@
 .\objects\driver_uart.o: Drivers\Driver_UART.c
 .\objects\driver_uart.o: C:\Users\hoang\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.1\Device\Include\stm32f10x.h
-.\objects\driver_uart.o: .\RTE\_Simule\RTE_Components.h
+.\objects\driver_uart.o: .\RTE\_Reel\RTE_Components.h
 .\objects\driver_uart.o: C:\Users\hoang\AppData\Local\Arm\Packs\ARM\CMSIS\5.9.0\CMSIS\Core\Include\core_cm3.h
 .\objects\driver_uart.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
 .\objects\driver_uart.o: C:\Users\hoang\AppData\Local\Arm\Packs\ARM\CMSIS\5.9.0\CMSIS\Core\Include\cmsis_version.h

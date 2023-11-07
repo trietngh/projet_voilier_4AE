@@ -4,15 +4,15 @@
 #include "Driver_Plateau.h"
 #include "Driver_UART.h"
 
-#define Plateau_PWM_GPIO GPIOA
-#define Plateau_PWM_Pin 3
+#define Plateau_PWM_GPIO GPIOB
+#define Plateau_PWM_Pin 1
 
 #define Plateau_DIR_GPIO GPIOA
 #define Plateau_DIR_Pin 6
 
-#define Plateau_Timer TIM2
-#define Plateau_Timer_ARR 35
-#define Plateau_Timer_PSC 99
+#define Plateau_Timer TIM3
+#define Plateau_Timer_ARR 99
+#define Plateau_Timer_PSC 35
 
 #define Plateau_USART USART1
 #define Plateau_USART_TX 9
