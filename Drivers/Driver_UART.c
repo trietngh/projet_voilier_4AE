@@ -124,7 +124,7 @@ void MyUART_Send(MyUART_Struct_TypeDef * MyUART, char * msg, uint16_t number_of_
 		mask_bit = 0x1FF;
 	}
 	
-	
+	//Note : on ne traite que le cas où length_of_word_send == 8 et parity == 0
 	for (i=length_of_word_send; i <= length_data; i+= length_of_word_send) {
 		
 		while((MyUART->UART->SR & USART_SR_TXE) == 0){
@@ -136,7 +136,7 @@ void MyUART_Send(MyUART_Struct_TypeDef * MyUART, char * msg, uint16_t number_of_
 	}
 }
 
-void MyUART_Receive_IT(MyUART_Struct_TypeDef * MyUART, char Priorite, void (*IT_handler) (void)){
+void MyUART_Enable_Receive_IT(MyUART_Struct_TypeDef * MyUART, char Priorite, void (*IT_handler) (void)){
 	//Enable interruption for RXNE flag
 	MyUART->UART->CR1 |= USART_CR1_RXNEIE;
 	//Initialize indexer of buffer
@@ -169,6 +169,7 @@ void USART1_IRQHandler (){
 		if (ptr_Fnc_Callback != 0){
 			INDEXER_BUFFER = 0;
 			(*ptr_Fnc_Callback) ();
+			
 		}
 	}
 }

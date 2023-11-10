@@ -12,4 +12,8 @@
 #################
 *.uvguix.*
 *.uvprojx
+<<<<<<< HEAD
 *.uvoptx
+=======
+*.uvoptx
+>>>>>>> plateau
