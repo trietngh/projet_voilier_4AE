@@ -1,0 +1,15 @@
+# Compiled source #
+###################
+*.exe
+*.o
+
+# Output files #
+################
+/Listings/*
+/Objects/*
+
+# Project files #
+#################
+*.uvguix.*
+*.uvprojx
+*.uvoptx
