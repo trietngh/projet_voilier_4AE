@@ -11,9 +11,4 @@
 # Project files #
 #################
 *.uvguix.*
-*.uvprojx
-<<<<<<< HEAD
 *.uvoptx
-=======
-*.uvoptx
->>>>>>> plateau
