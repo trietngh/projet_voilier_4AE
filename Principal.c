@@ -13,6 +13,7 @@
 #define Plateau_Timer TIM3
 #define Plateau_Timer_ARR 99
 #define Plateau_Timer_PSC 35
+#define Plateau_Timer_Channel 4
 
 #define Plateau_USART USART1
 #define Plateau_USART_TX 9
@@ -26,7 +27,7 @@ int main(void){
 	MyTimer_Struct_TypeDef Plateau_Timer_pour_PWM = {Plateau_Timer, Plateau_Timer_ARR, Plateau_Timer_PSC};
 	MyUART_Struct_TypeDef Plateau_UART = {Plateau_USART, Plateau_USART_TX, Plateau_USART_RX, Plateau_USART_GPIO, BAUD_9600, STOP_BIT_1, WORD_LENGTH_8, NO_PARITY};
 
-	Plateau.Channel_PWM = 4; 
+	Plateau.Channel_PWM = Plateau_Timer_Channel; 
 	Plateau.DIR_Pin = &Plateau_DIR;
 	Plateau.PWM_Pin = &Plateau_PWM;
 	Plateau.Timer_Plateau = &Plateau_Timer_pour_PWM;

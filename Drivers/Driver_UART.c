@@ -9,9 +9,15 @@ void (*ptr_Fnc_Callback) (void);
 
 void MyUART_Init(MyUART_Struct_TypeDef * MyUART){
 	//Configuration pins pour Tx et Rx
-	MyGPIO_Struct_TypeDef TX = {GPIOA, 9, AltOut_Ppull};
-	MyGPIO_Struct_TypeDef RX = {GPIOA, 10, In_Floating};
+	MyGPIO_Struct_TypeDef TX, RX;
 	
+	TX.GPIO = MyUART->GPIO; 
+	TX.GPIO_Pin = MyUART->TX_pin; 
+	TX.GPIO_Conf = AltOut_Ppull;
+	
+	RX.GPIO = MyUART->GPIO; 
+	RX.GPIO_Pin = MyUART->RX_pin; 
+	RX.GPIO_Conf = In_Floating;	
 	
 	// Init clock pour le UART
 	if (MyUART->UART == USART1){
