@@ -6,7 +6,6 @@
 Time_RTC_Typedef RTC_Current_Time;
 
 void ITErr_function(){
-	
 }
 
 
