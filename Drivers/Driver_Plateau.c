@@ -13,13 +13,11 @@
 #define Plateau_Timer_Channel 4
 
 Plateau_Struct_Typedef MonPlateau_global;
+MyGPIO_Struct_TypeDef Plateau_PWM = {Plateau_PWM_GPIO, Plateau_PWM_Pin, AltOut_Ppull};
+MyGPIO_Struct_TypeDef Plateau_DIR = {Plateau_DIR_GPIO, Plateau_DIR_Pin, Out_Ppull};
+MyTimer_Struct_TypeDef Plateau_Timer_pour_PWM = {Plateau_Timer, Plateau_Timer_ARR, Plateau_Timer_PSC};
 
 void PLATEAU_Init (){
-	
-	MyGPIO_Struct_TypeDef Plateau_PWM = {Plateau_PWM_GPIO, Plateau_PWM_Pin, AltOut_Ppull};
-	MyGPIO_Struct_TypeDef Plateau_DIR = {Plateau_DIR_GPIO, Plateau_DIR_Pin, Out_Ppull};
-	MyTimer_Struct_TypeDef Plateau_Timer_pour_PWM = {Plateau_Timer, Plateau_Timer_ARR, Plateau_Timer_PSC};
-
 	MonPlateau_global.Channel_PWM = Plateau_Timer_Channel; 
 	MonPlateau_global.DIR_Pin = &Plateau_DIR;
 	MonPlateau_global.PWM_Pin = &Plateau_PWM;
