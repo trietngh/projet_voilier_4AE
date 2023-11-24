@@ -5,6 +5,11 @@
 #include "Driver_Plateau.h"
 
 Plateau_Struct_Typedef MonPlateau_global;
+MyGPIO_Struct_TypeDef Plateau_PWM = {Plateau_PWM_GPIO, Plateau_PWM_Pin, AltOut_Ppull};
+MyGPIO_Struct_TypeDef Plateau_DIR = {Plateau_DIR_GPIO, Plateau_DIR_Pin, Out_Ppull};
+MyTimer_Struct_TypeDef Plateau_Timer_pour_PWM = {Plateau_Timer, Plateau_Timer_ARR, Plateau_Timer_PSC};
+MyUART_Struct_TypeDef Plateau_UART = {Plateau_USART, Plateau_USART_TX, Plateau_USART_RX, Plateau_USART_GPIO, BAUD_9600, STOP_BIT_1, WORD_LENGTH_8, NO_PARITY};
+
 
 //Callback function for receiving from USART
 void USART_IT(void){
@@ -31,12 +36,9 @@ void USART_IT(void){
 	MyTimer_PWM_DutyCycle(MonPlateau_global.Timer_Plateau, MonPlateau_global.Channel_PWM, duty_cycle_PWM);
 }
 
+
 void PLATEAU_Init (){
 	
-	MyGPIO_Struct_TypeDef Plateau_PWM = {Plateau_PWM_GPIO, Plateau_PWM_Pin, AltOut_Ppull};
-	MyGPIO_Struct_TypeDef Plateau_DIR = {Plateau_DIR_GPIO, Plateau_DIR_Pin, Out_Ppull};
-	MyTimer_Struct_TypeDef Plateau_Timer_pour_PWM = {Plateau_Timer, Plateau_Timer_ARR, Plateau_Timer_PSC};
-	MyUART_Struct_TypeDef Plateau_UART = {Plateau_USART, Plateau_USART_TX, Plateau_USART_RX, Plateau_USART_GPIO, BAUD_9600, STOP_BIT_1, WORD_LENGTH_8, NO_PARITY};
 
 	MonPlateau_global.Channel_PWM = Plateau_Timer_Channel; 
 	MonPlateau_global.DIR_Pin = &Plateau_DIR;
@@ -72,4 +74,7 @@ void PLATEAU_Enable (){
 	MyTimer_Base_Start(MonPlateau_global.Timer_Plateau->Timer);
 
 }
+
+
+
 
