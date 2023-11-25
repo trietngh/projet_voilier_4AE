@@ -112,8 +112,8 @@ char MySPI_Read(void);
 
 
 
-/**
-  * @brief Positionne /CS = /NSS à '1'. A utiliser pour borner les octets à transmettre/recevoir
+/**  * @brief Positionne /CS = /NSS à '1'. A utiliser pour borner les octets à transmettre/recevoir
+
 	* @param : none
   */
 void MySPI_Set_NSS(void);
