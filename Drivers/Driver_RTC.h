@@ -16,15 +16,6 @@
 #define RTC_DISABLE_MSG 0x80
 #define RTC_ERROR_MSG "9999999"
 
-#define DIM 1
-#define LUN 2
-#define MAR 3
-#define MER 4
-#define JEU 5
-#define VEN 6
-#define SAM 7
-
-
 #define MASK_GET_SECONDE 0x7F
 #define MASK_GET_HEURE 0x3F
 #define MASK_UNITAIRE 0x0F

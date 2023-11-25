@@ -9,6 +9,7 @@
 
 void TELECOM_Init (void);
 void TELECOM_Enable(void);
+void TELECOM_Send_Message(void);
 
 
 #endif
