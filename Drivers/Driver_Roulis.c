@@ -1,8 +1,6 @@
 #include "Driver_Roulis.h"
 
 
-
-
 #define ROULIS_POWER_CTL_ADDR 0X2D
 #define ROULIS_POWER_CTL_VALUE 0x08
 
@@ -88,8 +86,10 @@ void ROULIS_SendMsg(char MsgToSend){
 }
 
 void ROULIS_ReadMsg(char * msgReceived, uint8_t nbByteRead){
+	uint8_t iter;
 	MySPI_Clear_NSS();	
-	for(uint8_t iter; iter < nbByteRead; iter++){
+
+	for(iter= 0; iter < nbByteRead; iter++){
 		msgReceived[iter] = MySPI_Read();
 	}	
 	MySPI_Set_NSS();
