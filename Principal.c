@@ -6,6 +6,7 @@
 #include "Driver_RTC.h"
 #include "Driver_Telecommande.h"
 #include "Driver_Delay.h"
+#include "Driver_Roulis.h"
 
 
 int main(void){
@@ -23,6 +24,9 @@ int main(void){
 	RTC_Enable();
 	RTC_SetTime(1,18,9,22,11,44,50); // date, jour, mois, annee, heure, minute, seconde
 
+	
+	
+	ROULIS_Init();
 	
 	do
 	{
