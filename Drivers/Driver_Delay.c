@@ -1,7 +1,7 @@
 #include "Driver_Delay.h"
 #include <stdbool.h>
 
-#define DELAY_Timer TIM1
+#define DELAY_Timer TIM4
 #define DELAY_PSC	7199
 #define DELAY_ARR 1
 
@@ -23,10 +23,12 @@ void DELAY_Init(){
 void DELAY_WaitFor(unsigned short time_delay){
 	unsigned short nouveau_ARR = time_delay*10 - 1;
 	MyTimer_ChangeARR(&Timer_pour_Delay, nouveau_ARR);
+	Timer_pour_Delay.ARR = nouveau_ARR;
 	MyTimer_Base_Start(Timer_pour_Delay.Timer);
 	DELAY_CONTINUE = true;
 	while (DELAY_CONTINUE){
 	
 	}
 	MyTimer_Base_Stop(Timer_pour_Delay.Timer);
+	MyTimer_ResetCNT(&Timer_pour_Delay);
 };
