@@ -55,6 +55,12 @@ void MyTimer_ActiveIT (TIM_TypeDef * Timer, char Prio, void (*IT_handler) (void)
 }
 
 
+
+void MyTimer_ChangeARR (MyTimer_Struct_TypeDef * MyTimer, unsigned short new_ARR) {
+	//Reconfigurer Autoreload Register
+	MyTimer->Timer->ARR = new_ARR;
+}
+
 void MyTimer_PWM(TIM_TypeDef * Timer, char Channel){
 	//configurer le timer pour PWM
 	//Set the auto-reload preload register
