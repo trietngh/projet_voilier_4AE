@@ -4,6 +4,9 @@
 #include "Driver_Plateau.h"
 #include "Driver_RTC.h"
 
+#define MASK_UNITAIRE	0x0F
+#define MSG_LENGTH		10
+
 MyUART_Struct_TypeDef Telecom_Struct_UART = {TELECOM_USART, TELECOM_USART_TX, TELECOM_USART_RX, TELECOM_USART_GPIO, BAUD_9600, STOP_BIT_1, WORD_LENGTH_8, NO_PARITY};
 
 void TELECOM_Init (){
@@ -19,15 +22,19 @@ void TELECOM_Enable (){
 }
 
 void TELECOM_Send_Message(){
-	char Time_To_Send[6];
+	char Time_To_Send[MSG_LENGTH];
 	RTC_GetTime(); 
-	Time_To_Send[0] = RTC_Current_Time.heure;
-	Time_To_Send[1] = 'h';
-	Time_To_Send[2] = RTC_Current_Time.minute;
-	Time_To_Send[3] = 'm';
-	Time_To_Send[4] = RTC_Current_Time.seconde;
-	Time_To_Send[5] = 's';
-	MyUART_Send(&Telecom_Struct_UART, Time_To_Send, 6);
+	Time_To_Send[0] = (RTC_Current_Time.heure >> 4) + 0x30;
+	Time_To_Send[1] = (RTC_Current_Time.heure & MASK_UNITAIRE) + 0x30;
+	Time_To_Send[2] = 'h';
+	Time_To_Send[3] = (RTC_Current_Time.minute >> 4) + 0x30;
+	Time_To_Send[4] = (RTC_Current_Time.minute & MASK_UNITAIRE) + 0x30;
+	Time_To_Send[5] = 'm';
+	Time_To_Send[6] = (RTC_Current_Time.seconde >> 4) + 0x30;
+	Time_To_Send[7] = (RTC_Current_Time.seconde & MASK_UNITAIRE) + 0x30;
+	Time_To_Send[8] = 's';
+	Time_To_Send[9] = '\n';
+	MyUART_Send(&Telecom_Struct_UART, Time_To_Send, MSG_LENGTH);
 
 }
 
