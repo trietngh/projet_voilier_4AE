@@ -70,23 +70,23 @@ void RTC_GetTime(){
 	MyI2C_GetString(RTC_I2C, RTC_REGISTRE_DEBUT_ADRESSE, &dataToRec);
 	
 	RTC_Current_Time.seconde = time_from_rtc[0] & MASK_GET_SECONDE;
-	RTC_Current_Time.seconde = (RTC_Current_Time.seconde & MASK_UNITAIRE) + ((RTC_Current_Time.seconde>>4)*10);
+	//RTC_Current_Time.seconde = (RTC_Current_Time.seconde & MASK_UNITAIRE) + ((RTC_Current_Time.seconde>>4)*10);
 	
 	RTC_Current_Time.minute = time_from_rtc[1];
-	RTC_Current_Time.minute = (RTC_Current_Time.minute & MASK_UNITAIRE) + ((RTC_Current_Time.minute>>4)*10);
+	//RTC_Current_Time.minute = (RTC_Current_Time.minute & MASK_UNITAIRE) + ((RTC_Current_Time.minute>>4)*10);
 	
 	RTC_Current_Time.heure = time_from_rtc[2] & MASK_GET_HEURE;
-	RTC_Current_Time.heure = (RTC_Current_Time.heure & MASK_UNITAIRE) + ((RTC_Current_Time.heure>>4)*10);
+	//RTC_Current_Time.heure = (RTC_Current_Time.heure & MASK_UNITAIRE) + ((RTC_Current_Time.heure>>4)*10);
 	
 	RTC_Current_Time.date = time_from_rtc[3];
 	
 	RTC_Current_Time.jour = time_from_rtc[4];
-	RTC_Current_Time.jour = (RTC_Current_Time.jour & MASK_UNITAIRE) + ((RTC_Current_Time.jour>>4)*10);
+	//RTC_Current_Time.jour = (RTC_Current_Time.jour & MASK_UNITAIRE) + ((RTC_Current_Time.jour>>4)*10);
 	
 	RTC_Current_Time.mois = time_from_rtc[5];
-	RTC_Current_Time.mois = (RTC_Current_Time.mois & MASK_UNITAIRE) + ((RTC_Current_Time.mois>>4)*10);
+	//RTC_Current_Time.mois = (RTC_Current_Time.mois & MASK_UNITAIRE) + ((RTC_Current_Time.mois>>4)*10);
 
 	RTC_Current_Time.annee = time_from_rtc[6];
-	RTC_Current_Time.annee = (RTC_Current_Time.annee & MASK_UNITAIRE) + ((RTC_Current_Time.annee>>4)*10);
+	//RTC_Current_Time.annee = (RTC_Current_Time.annee & MASK_UNITAIRE) + ((RTC_Current_Time.annee>>4)*10);
 
 }
