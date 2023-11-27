@@ -1,7 +1,7 @@
 #include "Driver_Delay.h"
 #include <stdbool.h>
 
-#define DELAY_Timer TIM4
+#define DELAY_Timer TIM1
 #define DELAY_PSC	7199
 #define DELAY_ARR 1
 
