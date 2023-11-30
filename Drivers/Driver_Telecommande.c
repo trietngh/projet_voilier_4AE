@@ -5,7 +5,7 @@
 #include "Driver_RTC.h"
 
 #define MASK_UNITAIRE	0x0F
-#define MSG_LENGTH		10
+#define MSG_LENGTH		12
 
 MyUART_Struct_TypeDef Telecom_Struct_UART = {TELECOM_USART, TELECOM_USART_TX, TELECOM_USART_RX, TELECOM_USART_GPIO, BAUD_9600, STOP_BIT_1, WORD_LENGTH_8, NO_PARITY};
 
@@ -21,7 +21,7 @@ void TELECOM_Enable (){
 	MyUART_Enable(&Telecom_Struct_UART);
 }
 
-void TELECOM_Send_Message(){
+void TELECOM_Send_Message(char charToSend){
 	char Time_To_Send[MSG_LENGTH];
 	RTC_GetTime(); 
 	Time_To_Send[0] = (RTC_Current_Time.heure >> 4) + 0x30;
@@ -33,7 +33,10 @@ void TELECOM_Send_Message(){
 	Time_To_Send[6] = (RTC_Current_Time.seconde >> 4) + 0x30;
 	Time_To_Send[7] = (RTC_Current_Time.seconde & MASK_UNITAIRE) + 0x30;
 	Time_To_Send[8] = 's';
-	Time_To_Send[9] = '\n';
+	Time_To_Send[9] = ' ';
+	Time_To_Send[10] = charToSend;
+	Time_To_Send[11] = '\n';
+	
 	MyUART_Send(&Telecom_Struct_UART, Time_To_Send, MSG_LENGTH);
 
 }

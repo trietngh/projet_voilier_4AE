@@ -25,9 +25,9 @@ typedef struct {
 	uint16_t DataZ;
 } Data_Accelero_TypeDef;
 
-void ROULIS_SendMsg(char MsgToSend);
+void ROULIS_SendMsg(char MsgToConfig, char MsgToSend);
 
-void ROULIS_ReadMsg(char * msgReceived, uint8_t nbByteRead);
+void ROULIS_ReadMsg(char MsgToConfig, char * msgReceived, uint8_t nbByteRead);
 
 void ROULIS_GetAngle(Data_Accelero_TypeDef * dataAccelero);
 
@@ -49,21 +49,17 @@ void ROULIS_Init(){
 	*/
 	/* Configure POWER_CTL registre */
 	msg_config = ROULIS_WRITE_MASK | ROULIS_SINGLE_BYTE_MASK | ROULIS_POWER_CTL_ADDR;
-
-	ROULIS_SendMsg(msg_config);
-	ROULIS_SendMsg(ROULIS_POWER_CTL_VALUE);
+	ROULIS_SendMsg(msg_config,ROULIS_POWER_CTL_VALUE);
 	
 	/* Configure BW_Rate registre */
 	msg_config = ROULIS_WRITE_MASK | ROULIS_SINGLE_BYTE_MASK | ROULIS_BW_RATE_ADDR;
 
-	ROULIS_SendMsg(msg_config);
-	ROULIS_SendMsg(ROULIS_BW_RATE_VALUE);
+	ROULIS_SendMsg(msg_config,ROULIS_BW_RATE_VALUE);
 	
 	/* Configure Data_Format registre */
 	msg_config = ROULIS_WRITE_MASK | ROULIS_SINGLE_BYTE_MASK | ROULIS_DATA_FORMAT_ADDR;
 
-	ROULIS_SendMsg(msg_config);
-	ROULIS_SendMsg(ROULIS_DATA_FORMAT_VALUE);
+	ROULIS_SendMsg(msg_config,ROULIS_DATA_FORMAT_VALUE);
 }
 
 
@@ -73,22 +69,25 @@ bool ROULIS_CheckTiltLimit(){
 	/* Get current incline angle from accelerometer */
 	ROULIS_GetAngle(&dataAccelero);
 	
-	if (dataAccelero.DataZ > ROULIS_TILT_LIMITE){
+	if (dataAccelero.DataZ < ROULIS_TILT_LIMITE){
 		limit_exceeded = true;
 	}
 	return limit_exceeded;
 }
 
-void ROULIS_SendMsg(char MsgToSend){
+void ROULIS_SendMsg(char MsgToConfig, char MsgToSend){
+	//MySPI_Clear_NSS();
+	//MySPI_Set_NSS();
 	MySPI_Clear_NSS();
+	MySPI_Send(MsgToConfig);
 	MySPI_Send(MsgToSend);
 	MySPI_Set_NSS();
 }
 
-void ROULIS_ReadMsg(char * msgReceived, uint8_t nbByteRead){
+void ROULIS_ReadMsg(char MsgToConfig, char * msgReceived, uint8_t nbByteRead){
 	uint8_t iter;
 	MySPI_Clear_NSS();	
-
+	MySPI_Send(MsgToConfig);
 	for(iter= 0; iter < nbByteRead; iter++){
 		msgReceived[iter] = MySPI_Read();
 	}	
@@ -109,8 +108,7 @@ void ROULIS_GetAngle(Data_Accelero_TypeDef * dataAccelero){
 	/* Message receive from accelerometer */
 	char msgReceived[nb_byte_read];
 	
-	ROULIS_SendMsg(msg_config);
-	ROULIS_ReadMsg(msgReceived, nb_byte_read);
+	ROULIS_ReadMsg(msg_config, msgReceived, nb_byte_read);
 	
 	dataAccelero->DataZ = msgReceived[0] + (msgReceived[1] << 8);
 }

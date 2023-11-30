@@ -79,7 +79,7 @@ MySPI_Clear_NSS
 														INITIALISATION SPI
 ========================================================================================= */
 
-/**
+/** 
 	* @brief Configure le SPI spécifié : FSCK = 281kHz, Repos SCK = '1', Front actif = up
 					 Gestion /CS logicielle à part, configure les 4 IO
 					 - SCK, MOSI : Out Alt push pull

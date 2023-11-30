@@ -20,9 +20,9 @@ int main(void){
 	
 	DELAY_Init();
 	
-	RTC_Init();
-	RTC_Enable();
-	RTC_SetTime(1,18,9,22,11,44,50); // date, jour, mois, annee, heure, minute, seconde
+	//RTC_Init();
+	//RTC_Enable();
+	//RTC_SetTime(1,18,9,22,11,44,50); // date, jour, mois, annee, heure, minute, seconde
 
 	
 	
@@ -30,7 +30,12 @@ int main(void){
 	
 	do
 	{
-		TELECOM_Send_Message();
-		DELAY_WaitFor(3000);
+		if (ROULIS_CheckTiltLimit()){
+			TELECOM_Send_Message('1');
+		}
+		else{
+			TELECOM_Send_Message('0');
+		}
+		DELAY_WaitFor(1000);
 	} while (1);
 }
