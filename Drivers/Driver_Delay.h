@@ -7,6 +7,7 @@
 void DELAY_Init(void);
 
 /* Provide a delay of time_delay ms */
-void DELAY_WaitFor(unsigned short time_delay);
+void DELAY_WaitWithInterrupt(unsigned short time_delay_ms, void (* ptrFunctionWhileDelay)(void));
+void DELAY_Wait(unsigned short time_delay_ms);
 
 #endif

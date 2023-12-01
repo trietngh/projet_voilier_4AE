@@ -79,7 +79,7 @@ MySPI_Clear_NSS
 														INITIALISATION SPI
 ========================================================================================= */
 
-/** 
+/**
 	* @brief Configure le SPI spécifié : FSCK = 281kHz, Repos SCK = '1', Front actif = up
 					 Gestion /CS logicielle à part, configure les 4 IO
 					 - SCK, MOSI : Out Alt push pull
@@ -112,8 +112,8 @@ char MySPI_Read(void);
 
 
 
-/**  * @brief Positionne /CS = /NSS à '1'. A utiliser pour borner les octets à transmettre/recevoir
-
+/**
+  * @brief Positionne /CS = /NSS à '1'. A utiliser pour borner les octets à transmettre/recevoir
 	* @param : none
   */
 void MySPI_Set_NSS(void);

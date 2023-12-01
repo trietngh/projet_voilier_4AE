@@ -1,4 +1,5 @@
 #include "Driver_Roulis.h"
+#include "Driver_Delay.h"
 
 
 #define ROULIS_POWER_CTL_ADDR 0X2D
@@ -19,7 +20,7 @@
 #define ROULIS_MULTI_BYTE_MASK 0x01 << 6
 #define ROULIS_SINGLE_BYTE_MASK 0x00
 
-#define ROULIS_TILT_LIMITE 0xC0
+#define ROULIS_TILT_LIMITE 0xA1
 
 typedef struct {
 	uint16_t DataZ;
@@ -39,6 +40,7 @@ void ROULIS_Init(){
 	
 	/* Init SPI for communication with Accelerometer */
 	MySPI_Init(ROULIS_SPI);
+	//DELAY_WaitFor(150);
 	
 	/* Configure the accelerometer according to the following requirement :
 			- No low mode required
@@ -76,12 +78,12 @@ bool ROULIS_CheckTiltLimit(){
 }
 
 void ROULIS_SendMsg(char MsgToConfig, char MsgToSend){
-	//MySPI_Clear_NSS();
-	//MySPI_Set_NSS();
+	DELAY_Wait(500);
 	MySPI_Clear_NSS();
 	MySPI_Send(MsgToConfig);
 	MySPI_Send(MsgToSend);
 	MySPI_Set_NSS();
+	DELAY_Wait(500);
 }
 
 void ROULIS_ReadMsg(char MsgToConfig, char * msgReceived, uint8_t nbByteRead){
@@ -90,6 +92,7 @@ void ROULIS_ReadMsg(char MsgToConfig, char * msgReceived, uint8_t nbByteRead){
 	MySPI_Send(MsgToConfig);
 	for(iter= 0; iter < nbByteRead; iter++){
 		msgReceived[iter] = MySPI_Read();
+		//DELAY_WaitFor(150);
 	}	
 	MySPI_Set_NSS();
 }

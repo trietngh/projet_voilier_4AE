@@ -9,7 +9,7 @@
 
 void TELECOM_Init (void);
 void TELECOM_Enable(void);
-void TELECOM_Send_Message(char charToSend);
+void TELECOM_Send_Message(char * StringToSend, int length_string);
 
 
 #endif

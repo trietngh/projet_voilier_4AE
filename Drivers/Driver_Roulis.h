@@ -5,7 +5,7 @@
 #include <stdbool.h>
 #include "MySPI.h"
 
-#define ROULIS_SPI SPI1
+#define ROULIS_SPI SPI2
 
 /* Init the accelerometer for mesuring angle */
 void ROULIS_Init(void);

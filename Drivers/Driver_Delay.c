@@ -20,14 +20,27 @@ void DELAY_Init(){
 	MyTimer_ActiveIT (Timer_pour_Delay.Timer, DELAY_IRQ_PRIO, DELAY_IT_Handler);
 }
 
-void DELAY_WaitFor(unsigned short time_delay){
-	unsigned short nouveau_ARR = time_delay*10 - 1;
+void DELAY_WaitWithInterrupt(unsigned short time_delay_ms, void (* ptrFunctionWhileDelay)(void)){
+	unsigned short nouveau_ARR = time_delay_ms*10 - 1;
 	MyTimer_ChangeARR(&Timer_pour_Delay, nouveau_ARR);
 	Timer_pour_Delay.ARR = nouveau_ARR;
 	MyTimer_Base_Start(Timer_pour_Delay.Timer);
 	DELAY_CONTINUE = true;
 	while (DELAY_CONTINUE){
-	
+		(*ptrFunctionWhileDelay) ();
+	}
+	MyTimer_Base_Stop(Timer_pour_Delay.Timer);
+	MyTimer_ResetCNT(&Timer_pour_Delay);
+};
+
+void DELAY_Wait(unsigned short time_delay_ms){
+	unsigned short nouveau_ARR = time_delay_ms*10 - 1;
+	MyTimer_ChangeARR(&Timer_pour_Delay, nouveau_ARR);
+	Timer_pour_Delay.ARR = nouveau_ARR;
+	MyTimer_Base_Start(Timer_pour_Delay.Timer);
+	DELAY_CONTINUE = true;
+	while (DELAY_CONTINUE){
+		
 	}
 	MyTimer_Base_Stop(Timer_pour_Delay.Timer);
 	MyTimer_ResetCNT(&Timer_pour_Delay);

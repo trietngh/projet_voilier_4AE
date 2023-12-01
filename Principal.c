@@ -9,6 +9,12 @@
 #include "Driver_Roulis.h"
 
 
+void Checking_Emergency (void){
+	if ( ROULIS_CheckTiltLimit()){
+		TELECOM_Send_Message("Deborde",7);
+	}
+}
+
 int main(void){
 
 	PLATEAU_Init();
@@ -20,9 +26,9 @@ int main(void){
 	
 	DELAY_Init();
 	
-	//RTC_Init();
-	//RTC_Enable();
-	//RTC_SetTime(1,18,9,22,11,44,50); // date, jour, mois, annee, heure, minute, seconde
+	RTC_Init();
+	RTC_Enable();
+	RTC_SetTime(1,18,9,22,11,44,50); // date, jour, mois, annee, heure, minute, seconde
 
 	
 	
@@ -30,12 +36,8 @@ int main(void){
 	
 	do
 	{
-		if (ROULIS_CheckTiltLimit()){
-			TELECOM_Send_Message('1');
-		}
-		else{
-			TELECOM_Send_Message('0');
-		}
-		DELAY_WaitFor(1000);
+		TELECOM_Send_Message("message en plus",15);
+
+		DELAY_WaitWithInterrupt(3000, Checking_Emergency);
 	} while (1);
 }
