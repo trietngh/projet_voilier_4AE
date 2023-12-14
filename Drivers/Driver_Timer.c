@@ -129,22 +129,22 @@ void MyTimer_PWM(TIM_TypeDef * Timer, char Channel){
 	}
 }
 
-void MyTimer_PWM_DutyCycle(MyTimer_Struct_TypeDef * MyTimer, char Channel, unsigned short ratio){
+void MyTimer_PWM_DutyCycle(MyTimer_Struct_TypeDef * MyTimer, char Channel, float ratio){
 	if (Channel==1){
 		MyTimer->Timer->CCR1 &= 0x0;
-		MyTimer->Timer->CCR1 |= ((MyTimer->ARR+1)*ratio/100);
+		MyTimer->Timer->CCR1 |= (uint16_t)((MyTimer->ARR+1)*ratio/100);
 	}
 	else if (Channel == 2){
 		MyTimer->Timer->CCR2 &= 0x0;
-		MyTimer->Timer->CCR2 |= ((MyTimer->ARR+1)*ratio/100);
+		MyTimer->Timer->CCR2 |= (uint16_t)((MyTimer->ARR+1)*ratio/100);
 	}
 	else if (Channel == 3){
 		MyTimer->Timer->CCR3 &= 0x0;
-		MyTimer->Timer->CCR3 |= ((MyTimer->ARR+1)*ratio/100);
+		MyTimer->Timer->CCR3 |= (uint16_t)((MyTimer->ARR+1)*ratio/100);
 	}
 	else if (Channel == 4){
 		MyTimer->Timer->CCR4 &= 0x0;
-		MyTimer->Timer->CCR4 |= ((MyTimer->ARR+1)*ratio/100);
+		MyTimer->Timer->CCR4 |= (uint16_t)((MyTimer->ARR+1)*ratio/100);
 	}
 	
 }

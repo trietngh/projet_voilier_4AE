@@ -7,7 +7,7 @@
 #define RTC_I2C	I2C2
 
 #define RTC_ADRESSE 0x68 
-#define RTC_IRQ_PRIORITE 1
+#define RTC_IRQ_PRIORITE 2
 #define RTC_HEURE_MODE_24 0
 #define RTC_REGISTRE_DEBUT_ADRESSE 0x0
 

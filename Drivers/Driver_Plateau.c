@@ -1,16 +1,16 @@
 #include "stm32f10x.h"
 #include "Driver_Plateau.h"
 
-#define Plateau_PWM_GPIO GPIOB
+#define Plateau_PWM_GPIO GPIOA
 #define Plateau_PWM_Pin 1
 
 #define Plateau_DIR_GPIO GPIOA
-#define Plateau_DIR_Pin 6
+#define Plateau_DIR_Pin 4
 
-#define Plateau_Timer TIM3
+#define Plateau_Timer TIM2
 #define Plateau_Timer_ARR 99
 #define Plateau_Timer_PSC 35
-#define Plateau_Timer_Channel 4
+#define Plateau_Timer_Channel 2
 
 Plateau_Struct_Typedef MonPlateau_global;
 MyGPIO_Struct_TypeDef Plateau_PWM = {Plateau_PWM_GPIO, Plateau_PWM_Pin, AltOut_Ppull};

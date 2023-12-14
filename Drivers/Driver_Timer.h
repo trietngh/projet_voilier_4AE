@@ -19,7 +19,7 @@ void MyTimer_ResetCNT (MyTimer_Struct_TypeDef * MyTimer);
 
 void MyTimer_PWM(TIM_TypeDef * Timer, char Channel);
 
-void MyTimer_PWM_DutyCycle(MyTimer_Struct_TypeDef * MyTimer, char Channel, unsigned short ratio);
+void MyTimer_PWM_DutyCycle(MyTimer_Struct_TypeDef * MyTimer, char Channel, float ratio);
 
 void TIM1_UP_IRQHandler(void);
 void TIM2_IRQHandler(void);

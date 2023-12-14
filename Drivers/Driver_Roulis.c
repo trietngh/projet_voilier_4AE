@@ -78,12 +78,10 @@ bool ROULIS_CheckTiltLimit(){
 }
 
 void ROULIS_SendMsg(char MsgToConfig, char MsgToSend){
-	DELAY_Wait(500);
 	MySPI_Clear_NSS();
 	MySPI_Send(MsgToConfig);
 	MySPI_Send(MsgToSend);
 	MySPI_Set_NSS();
-	DELAY_Wait(500);
 }
 
 void ROULIS_ReadMsg(char MsgToConfig, char * msgReceived, uint8_t nbByteRead){
@@ -92,7 +90,6 @@ void ROULIS_ReadMsg(char MsgToConfig, char * msgReceived, uint8_t nbByteRead){
 	MySPI_Send(MsgToConfig);
 	for(iter= 0; iter < nbByteRead; iter++){
 		msgReceived[iter] = MySPI_Read();
-		//DELAY_WaitFor(150);
 	}	
 	MySPI_Set_NSS();
 }
