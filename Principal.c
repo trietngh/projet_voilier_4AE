@@ -1,3 +1,13 @@
+/**
+ * @file Principal.c
+ * @author TANG Cam - NGUYEN Triet - Louison TETAZ - Julie REVELLI
+ * @brief Header de la fonction Main du projet Voilier - INSA Toulouse - 4AESE - TP2
+ * @date 2023-12-15
+ * 
+ * @copyright Copyright (c) 2023
+ * 
+ */
+
 #include "stm32f10x.h"
 #include "Driver_GPIO.h"
 #include "Driver_Timer.h"
@@ -13,54 +23,61 @@
 #include <stdbool.h>
 
 
+//variable global de l'angle courant de girouette 
+short angle_courant;
 
-	short angle_courant;
-
+//fonction de verifier les situations en urgence
 void Checking_Emergency (void){
 	if (ROULIS_CheckTiltLimit()){
 		TELECOM_Send_Message("Deborde",7);
-		ServoMoteur(180);
-		TELECOM_Send_Message("Regle",7);
+		ServoMoteur_Move(180);
 	}
 	else if (Tension_ADC_ok() == false){
 		TELECOM_Send_Message("Battery low",11);
 	}
 	else{
-		ServoMoteur(Girouette_GetAngle());
+		ServoMoteur_Move(Girouette_GetAngle());
 	}
 }
 
 int main(void){
 
+	//initialiser le niveau de tension
 	Tension_ADC_Init();
 
+	//initialiser et demarrer le plateau
 	PLATEAU_Init();
 	PLATEAU_Enable();
 	
-	
+	//initialiser et demarrer la telecommande
 	TELECOM_Init();
 	TELECOM_Enable();
 	
+	//initialiser et demarrer la girouette
 	Girouette_Init();
-	Girouette();
+	Girouette_Conf();
 	
+	//initialiser servomoteur
 	ServoMoteur_Init();
 	
+	//initialiser le timer pour le delais 3 secondes
 	DELAY_Init();
 	
+	//initialiser et demarrer et set time pour Real Time Clock
 	RTC_Init();
 	RTC_Enable();
-	RTC_SetTime(1,18,9,22,11,44,50); // date, jour, mois, annee, heure, minute, seconde
+	RTC_SetTime(6,15,12,23,14,30,00); // date, jour, mois, annee, heure, minute, seconde
 
-	
-	
+	//initialiser le roulis
   ROULIS_Init();
 	
 	
 	do
 	{
+		//prendre l'angle de girouette courant
 		angle_courant = Girouette_GetAngle();
 		
+		//afficher les messages selon la position de voilier chaque 3 secondes
 		if( (0 <= angle_courant && angle_courant < 40) ||  (320 <= angle_courant && angle_courant < 360))
 		{
 			TELECOM_Send_Message("le voilier navigue au debout",28);
@@ -83,6 +100,7 @@ int main(void){
 			TELECOM_Send_Message("le voilier navigue en arriere",29);
 		}
 		
+		//toujours verifier les alerts 
 		DELAY_WaitWithInterrupt(3000, Checking_Emergency);
 	} while (1);
 }

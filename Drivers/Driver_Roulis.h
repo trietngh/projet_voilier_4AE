@@ -1,3 +1,11 @@
+/**
+ * @file Driver_RTC.h
+ * @author TANG Cam - NGUYEN Triet 
+ * @date 2023-12-15
+ * @copyright Copyright (c) 2023
+ * 
+ */
+
 #ifndef MYROULIS_H
 #define MYROULIS_H
 

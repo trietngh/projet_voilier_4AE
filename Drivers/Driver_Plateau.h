@@ -1,3 +1,11 @@
+/**
+ * @file Plateau.h
+ * @author TANG Cam - NGUYEN Triet 
+ * @date 2023-12-15
+ * @copyright Copyright (c) 2023
+ * 
+ */
+
 #ifndef PLATEAU_H
 #define PLATEAU_H
 

@@ -1,3 +1,12 @@
+/**
+ * @file Driver_Delay.h
+ * @author TANG Cam - NGUYEN Triet 
+ * @date 2023-12-15
+ * 
+ * @copyright Copyright (c) 2023
+ * 
+ */
+
 #ifndef DELAY_H
 #define DELAY_H
 

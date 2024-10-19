@@ -1,3 +1,12 @@
+/**
+ * @file Driver_ServoMoteur.c
+ * @author Louison TETAZ - Julie REVELLI - TANG Cam - NGUYEN Triet 
+ * @date 2023-12-15
+ * 
+ * @copyright Copyright (c) 2023
+ * 
+ */
+
 #include "stm32f10x.h"
 #include "Driver_GPIO.h"
 #include "Driver_Timer.h"
@@ -5,7 +14,7 @@
 #include "Driver_Girouette.h"
 
 MyGPIO_Struct_TypeDef MonPWM = {GPIOB, 6, AltOut_Ppull};
-MyTimer_Struct_TypeDef MonTIM = {TIM4, 1599, 899};
+MyTimer_Struct_TypeDef MonTIM = {TIM4, 35999, 39};
 
 void ServoMoteur_Init(void)
 {
@@ -20,7 +29,7 @@ void ServoMoteur_Init(void)
 	MyTimer_Base_Start(TIM4);
 }
 
-void ServoMoteur (short angle)
+void ServoMoteur_Move (short angle)
 {	
 	//10% fermer les voiles
 	//5% ouvrir completement les voiles

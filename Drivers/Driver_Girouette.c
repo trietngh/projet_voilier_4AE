@@ -1,3 +1,12 @@
+/**
+ * @file Driver_Girouette.c
+ * @author Louison TETAZ - Julie REVELLI - TANG Cam - NGUYEN Triet 
+ * @date 2023-12-15
+ * 
+ * @copyright Copyright (c) 2023
+ * 
+ */
+
 #include "stm32f10x.h"
 #include "Driver_GPIO.h"
 #include "Driver_Timer.h"
@@ -24,7 +33,7 @@ void Girouette_Init(void)
 	MyGPIO_Init(&MonIndex);
 }
 
-void Girouette ()
+void Girouette_Conf ()
 {
 	//configuration deux voies
 	TIM3->SMCR &= ~(TIM_SMCR_SMS);

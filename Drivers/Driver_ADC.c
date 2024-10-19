@@ -1,3 +1,11 @@
+/**
+ * @file Driver_ADC.c
+ * @author Louison TETAZ - Julie REVELLI
+ * @date 2023-12-15
+ * 
+ * @copyright Copyright (c) 2023
+ * 
+ */
 #include "stm32f10x.h"
 #include "Driver_Timer.h"
 #include "Driver_GPIO.h"

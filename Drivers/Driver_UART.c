@@ -1,3 +1,11 @@
+/**
+ * @file Driver_UART.c
+ * @author TANG Cam - NGUYEN Triet 
+ * @date 2023-12-15
+ * @copyright Copyright (c) 2023
+ * 
+ */
+
 #include "stm32f10x.h"
 #include "Driver_UART.h"
 #include "Driver_GPIO.h"
